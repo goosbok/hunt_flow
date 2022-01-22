@@ -314,8 +314,8 @@ async def push_data(
 
 
 def run() -> bool:
-    logger.info('Start process')
     headers, excel_base_path = get_requisites()
+    logger.info('Start process')
     base = Base(base_path=excel_base_path)
     exceptions = const.LOOP.run_until_complete(
         push_data(base=base, headers=headers)

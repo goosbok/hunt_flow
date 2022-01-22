@@ -3,3 +3,7 @@ venv
 
 #logs
 *.log
+
+#dirs
+.idea/
+__pycache__
