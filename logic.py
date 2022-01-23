@@ -248,7 +248,7 @@ async def push_data(
         base: Base,
         headers: dict
 ) -> list:
-    candidates = base.get_not_write()
+    candidates = base.get_not_recorded()
     account_id = await get_account_id(headers=headers)
 
     uses_statuses = await get_uses_items(

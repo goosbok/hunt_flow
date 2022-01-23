@@ -1,6 +1,7 @@
 import typing as t
 
 import aiohttp
+from aiohttp.client_exceptions import ClientConnectorCertificateError
 
 import const
 
@@ -34,6 +35,19 @@ class ApiHttpRequest:
 
     def __init__(self):
         self._session = aiohttp.ClientSession()
+        const.LOOP.run_until_complete(self._check_conn())
+
+    def _set_session_without_ssl(self):
+        self._session = aiohttp.ClientSession(
+            connector=aiohttp.TCPConnector(verify_ssl=False)
+        )
+
+    async def _check_conn(self):
+        try:
+            await self._session.get(const.BASE_URL)
+        except ClientConnectorCertificateError:
+            await self.close_session()
+            self._set_session_without_ssl()
 
     async def close_session(self):
         await self._session.close()

@@ -5,6 +5,7 @@ LOOP = asyncio.get_event_loop()
 APP_NAME = 'base_loader/1.0'
 EMAIL = 'belikov.demayn3011@gmail.com'
 
+VERIFY_SSL = False
 BASE_URL = 'https://dev-100-api.huntflow.dev'
 BASE_HEADERS = {
     'User-Agent': f'{APP_NAME} ({EMAIL})',
@@ -18,7 +19,7 @@ GOOD_STATUSES = {
 }
 
 XLSX_FILE_EXTEND = '.xlsx'
-WRITE = 'write'
+RECORDED = 'recorded'
 
 STEP = 2
 
